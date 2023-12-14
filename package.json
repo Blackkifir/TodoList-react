@@ -26,9 +26,6 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@commitlint/cli": "^17.7.2",
-    "@commitlint/config-conventional": "^17.7.0",
-    "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^16.18.12",
     "@types/react": "^18.0.28",
@@ -38,7 +35,6 @@
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
     "babel-plugin-named-exports-order": "^0.0.2",
-    "commitizen": "^4.3.0",
     "dotenv": "^16.0.3",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -70,37 +66,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/@digitalroute/cz-conventional-changelog-for-jira",
-      "jiraPrefix": "JIRA",
-      "skipScope": false,
-      "customScope": true,
-      "skipBreaking": true
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "subject-case": [
-        2,
-        "never"
-      ],
-      "references-empty": [
-        2,
-        "never"
-      ]
-    },
-    "parserPreset": {
-      "parserOpts": {
-        "issuePrefixes": [
-          "JIRA-",
-          "#"
-        ]
-      }
-    }
   }
 }
