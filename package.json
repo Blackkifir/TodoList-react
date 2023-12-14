@@ -1,32 +1,63 @@
 {
-  "name": "my-app",
+  "name": "react-typescript",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.68",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.17",
+    "@hookform/resolvers": "^3.0.0",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@sentry/browser": "^7.68.0",
+    "@storybook/testing-library": "^0.2.0",
+    "axios": "^1.6.2",
+    "eslint-plugin-require-explicit-generics": "^0.4.2",
+    "i18next": "^22.4.11",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.7",
+    "react-i18next": "^12.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "redux-persist": "^6.0.0",
+    "sass": "^1.58.3",
+    "web-vitals": "^2.1.4",
+    "yup": "^1.0.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@commitlint/cli": "^17.7.2",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/node": "^16.18.12",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/react-redux": "^7.1.25",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    "@typescript-eslint/parser": "^5.60.0",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "commitizen": "^4.3.0",
+    "dotenv": "^16.0.3",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-storybook": "^0.6.13",
+    "husky": "^8.0.3",
+    "inquirer": "^8.2.6",
+    "msw": "^1.2.2",
+    "prop-types": "^15.8.1",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "webpack": "^5.82.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "prestart": "tsc --noEmit && eslint . --max-warnings=0",
+    "lint": "tsc --noEmit && eslint . --max-warnings=0",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -39,5 +70,37 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/@digitalroute/cz-conventional-changelog-for-jira",
+      "jiraPrefix": "JIRA",
+      "skipScope": false,
+      "customScope": true,
+      "skipBreaking": true
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "subject-case": [
+        2,
+        "never"
+      ],
+      "references-empty": [
+        2,
+        "never"
+      ]
+    },
+    "parserPreset": {
+      "parserOpts": {
+        "issuePrefixes": [
+          "JIRA-",
+          "#"
+        ]
+      }
+    }
   }
 }
