@@ -1,0 +1,28 @@
+$white: azure;
+$blue: rgb(100, 100, 217);
+$black: rgb(32, 32, 32);
+$yellow: rgb(255, 255, 74);
+
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin columnBetween() {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@mixin infoItemCatalog() {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 20px;
+  color: $yellow;
+}
+
+@mixin infoThePerson() {
+  font-size: 20px;
+  line-height: 20px;
+}
