@@ -1,29 +1,27 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 
-import Catalog from '../components/Catalog/Catalog';
-import Header from '../components/Header/Header';
-import Search from '../components/Search/Search';
-import { useAppDispatch } from '../redux/hooks/hooksTodos';
-import { axiosTodosData } from '../redux/slices/todoSlice';
+import Footer from '../components/FooterTodo/Footer';
+import Form from '../components/FormTodo/Form';
+import Header from '../components/HeaderTodo/Header';
+
+import type { ChangeEvent } from 'react';
 
 import styles from './Home.module.scss';
 
 export default function Home() {
-  const dispatch = useAppDispatch();
+  const [inputValue, setInputValue] = useState<string>('');
 
-  useEffect(() => {
-    dispatch(axiosTodosData());
-  }, [dispatch]);
+  const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
 
   return (
     <div className="wrapper">
       <Header />
       <main className={styles.main}>
-        <Search />
-        <section className={styles.catalog}>
-          <Catalog />
-        </section>
+        <Form onChangeInput={onChangeInput} inputValue={inputValue} />
       </main>
+      <Footer />
     </div>
   );
 }

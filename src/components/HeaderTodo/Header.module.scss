@@ -1,10 +1,10 @@
 @import '../../scss/variables';
 
 .header {
+  margin-bottom: 100px;
   width: 100%;
   height: 100px;
-  background-color: rgb(100, 100, 217);
-  margin-bottom: 100px;
+  background-color: #35424a;
 
   .header__flex {
     @include flexCenter();
@@ -15,6 +15,6 @@
     font-size: 50px;
     line-height: 50px;
     font-weight: 800;
-    color: $white;
+    color: #f2dede;
   }
 }

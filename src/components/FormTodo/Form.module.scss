@@ -1,0 +1,73 @@
+@import '../../scss/variables';
+
+.form {
+  margin-bottom: 100px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.formTodo {
+  @include flexCenter();
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: $white;
+
+  &__title {
+    margin: 50px 0 50px 0px;
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: 800;
+    color: $grey;
+  }
+
+  &__block {
+    position: relative;
+    &__input {
+      margin-bottom: 50px;
+      width: 400px;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 50px 10px 10px;
+      outline: none;
+      font-size: 20px;
+      background-color:  $grey;
+      color:  $white;
+    
+      &::placeholder {
+        font-size: 20px;
+        color:  $white;
+      }
+
+      &:focus {
+        transition: all .2s;
+        box-shadow: 3px 3px 7px  $grey;
+      }
+    }
+  }
+
+  &__addBtn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(#71a3c5, #9260a8);
+    font-size: 30px;
+    color: $white;
+    cursor: pointer;
+  }
+
+  &__toDo {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: $grey;
+  }
+}
