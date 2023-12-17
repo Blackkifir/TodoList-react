@@ -7,6 +7,11 @@
   border-radius: 10px;
   padding: 15px;
 
+  &:hover {
+    transition: all .2s;
+    box-shadow: 3px 3px 7px  $grey;
+  }
+
   &__block {
     display: flex;
     align-items: center;
@@ -16,9 +21,13 @@
     margin-right: 15px;
   }
 
-  &__name {
+  &__name,
+  &__nameDone {
     font-size: 22px;
     color: $white;
+  }
+  &__nameDone {
+    text-decoration: line-through;
   }
 
   &__deleteBtn {
