@@ -3,8 +3,9 @@
 
 .todo {
   @include flexBetween();
-  background-color: $grey;
+  margin-bottom: 15px;
   border-radius: 10px;
+  background-color: $grey;
   padding: 15px;
 
   &:hover {

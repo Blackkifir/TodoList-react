@@ -1,37 +1,31 @@
-import { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
 import deleteImg from '../../img/deleteItem.png';
-import { setIsDone } from '../../redux/todoSlice';
-
-import type { RootState } from '../../redux/store';
 
 import styles from './TodosItem.module.scss';
 
-export default function TodosItem() {
-  const dispatch = useDispatch();
-  const { isDone } = useSelector((state: RootState) => state.todoSlice);
-  const ref = useRef<HTMLInputElement | null>(null);
+type TodoProperties = {
+  todo: {
+    todoName: string,
+    checked: boolean,
+  }
+  onClickDeleteTodo: (deleteTodosName: string) => void;
+  onChangeChecked: (todoName: string) => void;
+};
 
-  const onChangeCheckBox = () => {
-    dispatch(setIsDone(!isDone));
-  };
-
+export default function TodosItem({ todo, onClickDeleteTodo, onChangeChecked }: TodoProperties) {
   return (
     <div className={styles.todo}>
-      <div className={styles.todo__block}>
+      <ul className={styles.todo__block}>
         <input
-          onChange={onChangeCheckBox}
+          onChange={() => onChangeChecked(todo.todoName)}
+          checked={todo.checked}
           type="checkBox"
           className={styles.todo__checkBox}
-          checked={isDone}
-          ref={ref}
         />
-        <p className={!isDone ? styles.todo__name : styles.todo__nameDone}>
-          Hello
+        <p className={!todo.checked ? styles.todo__name : styles.todo__nameDone}>
+          {todo.todoName}
         </p>
-      </div>
-      <button type="button" className={styles.todo__deleteBtn}>
+      </ul>
+      <button onClick={() => onClickDeleteTodo(todo.todoName)} type="button" className={styles.todo__deleteBtn}>
         <img src={deleteImg} alt="delete img not found" />
       </button>
     </div>
