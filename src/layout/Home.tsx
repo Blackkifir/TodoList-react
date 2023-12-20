@@ -40,6 +40,10 @@ export default function Home() {
 
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
+
+    if (event.target.value.length >= 40) {
+      setInputValue('');
+    }
   };
 
   const onChangeSubmit = (event: FormEvent) => {

@@ -33,6 +33,7 @@ export default function Form({
           <h1 className={styles.formTodo__title}>Your Tasks</h1>
           <div className={styles.formTodo__block}>
             <input
+              name="todoAddItem"
               value={inputValue}
               onChange={onChangeInput}
               className={styles.formTodo__block__input}

@@ -16,6 +16,7 @@ export default function TodosItem({ todo, onClickDeleteTodo, onChangeChecked }: 
     <div className={styles.todo}>
       <ul className={styles.todo__block}>
         <input
+          name="taskComplete"
           onChange={() => onChangeChecked(todo.todoName)}
           checked={todo.checked}
           type="checkBox"
