@@ -55,21 +55,17 @@
 
   &__addBtn {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
+    bottom: 0;
     width: 50px;
     height: 43px;
-    bottom: 0;
     border: none;
-    border-radius: 50px;
-    width: 31px;
-    height: 30px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     background: linear-gradient(#71a3c5, #9260a8);
-    font-size: 25px;
-    text-align: center;
     font-size: 20px;
+    text-align: center;
     color: $white;
     cursor: pointer;
   }
