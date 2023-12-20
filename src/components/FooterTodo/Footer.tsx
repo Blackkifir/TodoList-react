@@ -1,14 +1,20 @@
+import type { Todo } from '../../layout/Home';
+
 import styles from './Footer.module.scss';
 
-export default function Header() {
+type FooterProps = {
+  todos: Todo[];
+};
+
+export default function Footer({ todos }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__flex}>
         <p className={styles.footer__flex__calc}>
-          All items:
+          All your items:
           {' '}
           <b>
-            3
+            {todos.length}
           </b>
         </p>
       </div>

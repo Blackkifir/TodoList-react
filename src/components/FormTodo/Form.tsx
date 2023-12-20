@@ -1,63 +1,34 @@
-import { useState } from 'react';
-
 import TodosItem from '../TodosItems/TodosItem';
 
 import type { ChangeEvent, FormEvent } from 'react';
+import type { Todo } from '../../layout/Home';
 
 import styles from './Form.module.scss';
 
-type Todo = {
-  todoName: string,
-  checked: boolean,
+type TaskManager = {
+  todos: Todo[],
+  inputValue: string,
+  onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeSubmit: (event: FormEvent) => void;
+  onClickAddTodo: () => void;
+  onClickDeleteTodo: (deleteTodosName: string) => void;
+  onChangeChecked: (todoName: string) => void;
 };
 
-export default function Form() {
-  const [inputValue, setInputValue] = useState<string>('');
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  const addTodos = (todoName: string) => {
-    const newTodos = {
-      todoName,
-      checked: false,
-    };
-
-    setTodos([...todos, newTodos]);
-  };
-
-  const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
-  const onChangeSubmit = (event: FormEvent) => {
-    if (inputValue.trim() === '') return;
-    event.preventDefault();
-    addTodos(inputValue);
-    setInputValue('');
-  };
-
-  const onClickAddTodo = () => {
-    if (inputValue.trim() === '') return;
-    addTodos(inputValue);
-    setInputValue('');
-  };
-
-  const onClickDeleteTodo = (deleteTodosName: string) => {
-    setTodos(todos.filter((todo) => todo.todoName !== deleteTodosName));
-  };
-
-  const onChangeChecked = (todoName: string) => {
-    setTodos(
-      (prevTodo) => prevTodo.map(
-        (tasks) => (tasks.todoName === todoName ? { ...tasks, checked: !tasks.checked } : tasks),
-      ),
-    );
-  };
-
+export default function Form({
+  todos,
+  inputValue,
+  onChangeInput,
+  onChangeSubmit,
+  onClickAddTodo,
+  onClickDeleteTodo,
+  onChangeChecked,
+}: TaskManager) {
   return (
     <section className={styles.form}>
       <div className={styles.container}>
         <form onSubmit={onChangeSubmit} className={styles.formTodo}>
-          <h1 className={styles.formTodo__title}>NOTE TAKER</h1>
+          <h1 className={styles.formTodo__title}>Your Tasks</h1>
           <div className={styles.formTodo__block}>
             <input
               value={inputValue}
@@ -75,6 +46,7 @@ export default function Form() {
             <p className={styles.formTodo__toDo}>TO DO</p>
             {todos.map((todo) => (
               <TodosItem
+                key={todo.id}
                 onChangeChecked={onChangeChecked}
                 onClickDeleteTodo={onClickDeleteTodo}
                 todo={todo}
