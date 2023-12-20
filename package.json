@@ -1,6 +1,7 @@
 {
   "name": "react-typescript",
   "version": "0.1.0",
+  "homepage": "https://Blackkifir.github.io/TodoList-react",
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^3.0.0",
@@ -40,6 +41,7 @@
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.13",
+    "gh-pages": "^6.1.0",
     "husky": "^8.0.3",
     "inquirer": "^8.2.6",
     "msw": "^1.2.2",
@@ -48,6 +50,8 @@
     "webpack": "^5.82.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
