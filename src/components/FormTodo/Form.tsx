@@ -44,7 +44,7 @@ export default function Form({
               type="button"
               className={styles.formTodo__addBtn}
             >
-              {isComplete ? '✔' : '+'}
+              {isComplete ? '✔' : 'add'}
             </button>
             <p className={styles.formTodo__toDo}>TO DO</p>
             {todos.map((todo) => (
