@@ -5,8 +5,8 @@
 }
 
 .container {
-  max-width: 600px;
   margin: 0 auto;
+  max-width: 600px;
 }
 
 .formTodo {
@@ -18,20 +18,23 @@
 
   &__title {
     margin: 50px 0 50px 0px;
+    background-clip: text;
+    background-image: linear-gradient(#558db1, #9350b0);
     text-transform: uppercase;
     font-size: 50px;
     line-height: 50px;
     font-weight: 800;
-    color: $grey;
+    color: transparent;
   }
 
   &__block {
     position: relative;
+
     &__input {
       margin-bottom: 50px;
-      width: 400px;
       border: none;
       border-radius: 10px;
+      width: 400px;
       padding: 10px 50px 10px 10px;
       outline: none;
       font-size: 20px;
@@ -55,21 +58,32 @@
     top: 5px;
     right: 10px;
     bottom: 0;
-    width: 30px;
-    height: 30px;
     border: none;
     border-radius: 50px;
+    width: 30px;
+    height: 30px;
     background: linear-gradient(#71a3c5, #9260a8);
     font-size: 25px;
     color: $white;
     cursor: pointer;
   }
 
-  &__toDo,
-  .noTasks {
+  &__toDo {
     margin-bottom: 10px;
+    background-clip: text;
+    background-image: linear-gradient(#558db1, #9350b0);
     font-size: 20px;
     font-weight: bold;
-    color: $grey;
+    color: transparent;
   }
+}
+
+.noTasks {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background: $grey;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: $white;
 }

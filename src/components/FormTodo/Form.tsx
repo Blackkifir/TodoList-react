@@ -7,6 +7,7 @@ import styles from './Form.module.scss';
 
 type TaskManager = {
   todos: Todo[],
+  isComplete: boolean,
   inputValue: string,
   onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeSubmit: (event: FormEvent) => void;
@@ -17,6 +18,7 @@ type TaskManager = {
 
 export default function Form({
   todos,
+  isComplete,
   inputValue,
   onChangeInput,
   onChangeSubmit,
@@ -41,7 +43,7 @@ export default function Form({
               type="button"
               className={styles.formTodo__addBtn}
             >
-              +
+              {isComplete ? '✔' : '+'}
             </button>
             <p className={styles.formTodo__toDo}>TO DO</p>
             {todos.map((todo) => (
@@ -53,7 +55,7 @@ export default function Form({
               />
             ))}
 
-            {todos.length === 0 && <p className={styles.noTasks}>You have no tasks...</p>}
+            {todos.length === 0 && <p className={styles.noTasks}>You have no tasks</p>}
           </div>
         </form>
       </div>

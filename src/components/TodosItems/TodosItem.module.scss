@@ -5,8 +5,8 @@
   @include flexBetween();
   margin-bottom: 15px;
   border-radius: 10px;
-  background-color: $grey;
   padding: 15px;
+  background-color: $grey;
 
   &:hover {
     transition: all .2s;
@@ -32,10 +32,10 @@
   }
 
   &__deleteBtn {
-    width: 34px;
-    height: 34px;
     border: none;
     border-radius: 5px;
+    width: 34px;
+    height: 34px;
     background-color: $white;
     cursor: pointer;
   }

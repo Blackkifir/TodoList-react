@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Footer from '../components/FooterTodo/Footer';
 import Form from '../components/FormTodo/Form';
@@ -16,6 +16,14 @@ export type Todo = {
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [isComplete, setComplete] = useState<boolean>(false);
+
+  useEffect(() => {
+    const storageTodo = localStorage.getItem('todoList');
+    if (storageTodo) {
+      setTodos(JSON.parse(storageTodo));
+    }
+  }, []);
 
   const addTodos = (todoName: string) => {
     const newTodos = {
@@ -25,6 +33,7 @@ export default function Home() {
     };
 
     setTodos([...todos, newTodos]);
+    localStorage.setItem('todoList', JSON.stringify([...todos, newTodos]));
   };
 
   const [inputValue, setInputValue] = useState<string>('');
@@ -38,23 +47,40 @@ export default function Home() {
     event.preventDefault();
     addTodos(inputValue);
     setInputValue('');
+    setComplete(true);
+    setTimeout(() => {
+      setComplete(false);
+    }, 500);
   };
 
   const onClickAddTodo = () => {
     if (inputValue.trim() === '') return;
     addTodos(inputValue);
     setInputValue('');
+    setComplete(true);
+    setTimeout(() => {
+      setComplete(false);
+    }, 500);
   };
 
   const onClickDeleteTodo = (deleteTodosName: string) => {
-    setTodos(todos.filter((todo) => todo.todoName !== deleteTodosName));
+    setTodos((prevTodo) => {
+      const updatesTodo = prevTodo.filter((todo) => todo.todoName !== deleteTodosName);
+      localStorage.setItem('todoList', JSON.stringify(updatesTodo));
+      return updatesTodo;
+    });
   };
 
   const onChangeChecked = (todoName: string) => {
     setTodos(
-      (prevTodo) => prevTodo.map(
-        (tasks) => (tasks.todoName === todoName ? { ...tasks, checked: !tasks.checked } : tasks),
-      ),
+      (prevTodo) => {
+        const updatesCheckTodo = prevTodo.map(
+          (checks) => (checks.todoName === todoName
+            ? { ...checks, checked: !checks.checked } : checks),
+        );
+        localStorage.setItem('todoList', JSON.stringify(updatesCheckTodo));
+        return updatesCheckTodo;
+      },
     );
   };
 
@@ -64,6 +90,7 @@ export default function Home() {
       <main className={styles.main}>
         <Form
           todos={todos}
+          isComplete={isComplete}
           inputValue={inputValue}
           onChangeInput={onChangeInput}
           onChangeSubmit={onChangeSubmit}
