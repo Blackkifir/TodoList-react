@@ -62,7 +62,7 @@
     border-radius: 50px;
     width: 31px;
     height: 30px;
-    background: linear-gradient(#71a3c5, #9762ad);
+    background: linear-gradient(#71a3c5, #9260a8);
     font-size: 25px;
     color: $white;
     cursor: pointer;
@@ -93,8 +93,8 @@
   .formTodo {
     &__title {
       margin: 25px 0 25px 0;
-      font-size: 35px;
-      line-height: 35px;
+      font-size: 30px;
+      line-height: 30px;
     }
 
     &__block {
