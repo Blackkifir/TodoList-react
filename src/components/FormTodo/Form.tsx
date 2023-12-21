@@ -32,20 +32,22 @@ export default function Form({
         <form onSubmit={onChangeSubmit} className={styles.formTodo}>
           <h1 className={styles.formTodo__title}>Your Tasks</h1>
           <div className={styles.formTodo__block}>
-            <input
-              name="todoAddItem"
-              value={inputValue}
-              onChange={onChangeInput}
-              className={styles.formTodo__block__input}
-              placeholder="add item..."
-            />
-            <button
-              onClick={onClickAddTodo}
-              type="button"
-              className={styles.formTodo__addBtn}
-            >
-              {isComplete ? '✔' : 'add'}
-            </button>
+            <div className={styles.inputWithButton}>
+              <input
+                name="todoAddItem"
+                value={inputValue}
+                onChange={onChangeInput}
+                className={styles.formTodo__block__input}
+                placeholder="add item..."
+              />
+              <button
+                onClick={onClickAddTodo}
+                type="button"
+                className={styles.formTodo__addBtn}
+              >
+                {isComplete ? '✔' : 'add'}
+              </button>
+            </div>
             <p className={styles.formTodo__toDo}>TO DO</p>
             {todos.map((todo) => (
               <TodosItem

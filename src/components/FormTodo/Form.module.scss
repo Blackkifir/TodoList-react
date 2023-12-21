@@ -28,14 +28,18 @@
   }
 
   &__block {
-    position: relative;
+    .inputWithButton {
+      position: relative;
+      margin-bottom: 50px;
+      height: 43px;
+    }
 
     &__input {
-      margin-bottom: 50px;
       border: none;
       border-radius: 10px;
       width: 400px;
-      padding: 10px 50px 10px 10px;
+      height: 43px;
+      padding: 0px 50px 0px 10px;
       outline: none;
       font-size: 20px;
       background-color:  $grey;
@@ -55,9 +59,9 @@
 
   &__addBtn {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
     border: none;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
